@@ -47,7 +47,7 @@ def is_full(b):
 @app.route("/")
 def index():
     if "username" not in session:
-        return redirect(url_for("login"))
+        return redirect(url_for("register"))
 
     username = session["username"]
     users = load_users()
