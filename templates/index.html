@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+
+    <div class="scoreboard">
+        <p><strong>Logged in as {{ username }}</strong></p>
+    </div>
+
+    <p>Current Player: {{ current }}</p>
+
+    <table>
+        {% for i in range(3) %}
+        <tr>
+            {% for j in range(3) %}
+            <td>
+                {% if board[i][j] == " " and not winner %}
+                    <a href="/move/{{ i }}/{{ j }}">_</a>
+                {% else %}
+                    {{ board[i][j] }}
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if winner %}
+        <p class="winner">Player {{ winner }} wins!</p>
+    {% elif tie %}
+        <p class="winner tie">It's a tie!</p>
+    {% endif %}
+
+    <div class="scoreboard">
+        <p>Total Games Played: {{ games_played }}</p>
+        <p>X Wins: {{ x_score }} ({{ x_win_percent }}%)</p>
+        <p>O Wins: {{ o_score }} ({{ o_win_percent }}%)</p>
+    </div>
+
+    <p>
+        <a class="reset-link" href="#" onclick="openModal('reset-modal')">Reset Game</a>
+    </p>
+    <p>
+        <a class="logout-link" href="#" onclick="openModal('logout-modal')">Log Out</a>
+    </p>
+
+    <!-- Reset Confirmation Modal -->
+    <div class="modal" id="reset-modal">
+        <div class="modal-content">
+            <p>Are you sure you want to reset the game?</p>
+            <button onclick="confirmAction('/reset')">Reset</button>
+            <button onclick="closeModal('reset-modal')">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal" id="logout-modal">
+        <div class="modal-content">
+            <p>Are you sure you want to log out?</p>
+            <button onclick="confirmAction('/logout')">Log Out</button>
+            <button onclick="closeModal('logout-modal')">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        function confirmAction(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

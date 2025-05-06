@@ -1,0 +1,14 @@
+{
+  "aren1": {
+    "password": "scrypt:32768:8:1$Hz18V6KP1kz1EmZW$38ba2ab95f651ac493646d66a9fc94b8dde7bb1f917e97428bcb7b4aa44af6d9bd5f847da39eeb2f0c7cbbcd6beb9ed06591fd7a4fa9e2cbc3c0db2166b27827",
+    "x_score": 1,
+    "o_score": 1,
+    "games_played": 2
+  },
+  "AKphone": {
+    "password": "scrypt:32768:8:1$vdp1Q9RrUPH93U5C$c92e1defaf0ae417e663078f6bce34887f9eeec42ccc1d7368f4001dfb27455cb301713580714395f3f2daf80f8e7337b4361fee743319b84cd46b8ee9ac35ec",
+    "x_score": 0,
+    "o_score": 0,
+    "games_played": 0
+  }
+}
